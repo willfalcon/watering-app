@@ -9,12 +9,18 @@ steps:
     entrypoint: 'npm'
     args: ['run', 'build']
 
-  # Upload to Cloud Storage
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: 'gsutil'
-    args: ['-m', 'rsync', '-r', '-d', 'dist/', 'gs://tensure-apprenticeship-bucket-test/']
+  # # Upload to Cloud Storage
+  # - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  #   entrypoint: 'gsutil'
+  #   args: ['-m', 'rsync', '-r', '-d', 'dist/', 'gs://tensure-apprenticeship-bucket-test/']
 
-  # Optionally invalidate CDN cache if you're using Cloud CDN
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: 'gcloud'
-    args: ['compute', 'url-maps', 'invalidate-cdn-cache', 'watering-app-load-balancer', '--path', '/*']
+  # # Optionally invalidate CDN cache if you're using Cloud CDN
+  # - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  #   entrypoint: 'gcloud'
+  #   args: ['compute', 'url-maps', 'invalidate-cdn-cache', 'watering-app-load-balancer', '--path', '/*']
+
+  artifacts:
+    objects:
+      - location: gs://tensure-apprenticeship-bucket-test/
+        paths:
+          - dist/

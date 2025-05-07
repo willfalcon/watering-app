@@ -22,5 +22,5 @@ steps:
   artifacts:
     objects:
       - location: gs://tensure-apprenticeship-bucket-test/
-        paths:
+      -  paths:
           - dist/

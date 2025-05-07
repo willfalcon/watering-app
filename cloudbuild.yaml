@@ -23,6 +23,6 @@ artifacts:
   objects:
     location: 'gs://tensure-apprenticeship-bucket-test/'
     paths: ['dist/*']
+serviceAccount: '431396521218@cloudbuild.gserviceaccount.com'
 options:
-  serviceAccount: '431396521218@cloudbuild.gserviceaccount.com'
   logging: CLOUD_LOGGING_ONLY

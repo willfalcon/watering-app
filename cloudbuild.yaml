@@ -9,6 +9,10 @@ steps:
     entrypoint: 'npm'
     args: ['run', 'build']
 
+  # List the contents of the dist directory
+  - name: 'ubuntu' # Or any image with ls
+    entrypoint: 'bash'
+    args: ['-c', 'ls -R dist/'] #Recursive listing
   # # Upload to Cloud Storage
   # - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   #   entrypoint: 'gsutil'

@@ -1,0 +1,20 @@
+steps:
+  # Install dependencies
+  - name: 'node:18'
+    entrypoint: 'npm'
+    args: ['install']
+
+  # Build the application
+  - name: 'node:18'
+    entrypoint: 'npm'
+    args: ['run', 'build']
+
+  # Upload to Cloud Storage
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gsutil'
+    args: ['-m', 'rsync', '-r', '-d', 'dist/', 'gs://tensure-apprenticeship-bucket-test/']
+
+  # Optionally invalidate CDN cache if you're using Cloud CDN
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args: ['compute', 'url-maps', 'invalidate-cdn-cache', 'watering-app-load-balancer', '--path', '/*']

@@ -20,7 +20,7 @@ steps:
   #   args: ['compute', 'url-maps', 'invalidate-cdn-cache', 'watering-app-load-balancer', '--path', '/*']
 
   artifacts:
-    objects:
-      - location: gs://tensure-apprenticeship-bucket-test/
-      -  paths:
+    - objects:
+        location: gs://tensure-apprenticeship-bucket-test/
+        paths:
           - dist/

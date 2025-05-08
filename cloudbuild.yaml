@@ -9,20 +9,6 @@ steps:
     entrypoint: 'npm'
     args: ['run', 'build']
 
-  # List the contents of the dist directory
-  - name: 'ubuntu' # Or any image with ls
-    entrypoint: 'bash'
-    args: ['-c', 'ls -R dist/'] #Recursive listing
-  # # Upload to Cloud Storage
-  # - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  #   entrypoint: 'gsutil'
-  #   args: ['-m', 'rsync', '-r', '-d', 'dist/', 'gs://tensure-apprenticeship-bucket-test/']
-
-  # # Optionally invalidate CDN cache if you're using Cloud CDN
-  # - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  #   entrypoint: 'gcloud'
-  #   args: ['compute', 'url-maps', 'invalidate-cdn-cache', 'watering-app-load-balancer', '--path', '/*']
-
 artifacts:
   objects:
     location: 'gs://tensure-apprenticeship-bucket-test/'

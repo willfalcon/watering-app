@@ -12,7 +12,7 @@ steps:
 artifacts:
   objects:
     location: 'gs://tensure-apprenticeship-bucket-test/'
-    paths: ['dist/assets/*', 'dist/index.html']
+    paths: ['dist/']
 serviceAccount: '431396521218@cloudbuild.gserviceaccount.com'
 options:
   logging: CLOUD_LOGGING_ONLY
